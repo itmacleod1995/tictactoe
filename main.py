@@ -20,24 +20,27 @@ board = """
 """
 
 
-def makeChoice(player, board):
+def makeChoice(player, b):
     """Function that allows the player to play their piece on the board"""
     chooseAgain = True
     while chooseAgain:
-        choice = input("Position: ")
+        choice = input()
         if choice in selectedSpots:
             print("That cell has already been picked! Please pick again ")
         else:
             selectedSpots.append(choice)
-            board = board.replace(choice, player1)
-            print(board)
+            updatedboard = b.replace(choice, player)
+            print(updatedboard)
             chooseAgain = False
+
+        return updatedboard
 
 
 game = True
 turn = 1
 player1 = input("Player 1, choose X or O: ")
 
+"""Game Loop"""
 while game:
     print("")
     if player1 == "X":
@@ -46,12 +49,10 @@ while game:
         player2 = "O"
 
     if turn % 2 != 0:
-        print("Player 1's turn")
-        print("Player1, choose location: ")
-        makeChoice(player1, board)
+        print("Player1, choose location: ", end="")
+        board = makeChoice(player1, board)
     else:
-        print("Player 2's turn\n")
-        print("Player 2, choose location: ")
-        makeChoice(player2, board)
+        print("Player 2, choose location: ", end="")
+        board = makeChoice(player2, board)
 
     turn += 1
