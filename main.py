@@ -8,7 +8,7 @@ print("""
 """)
 
 print("Each player picks a digit on their keyboard corresponding to the cell they want to place")
-print("Whoever gets three in a row is the winner!")
+print("Whoever gets three in a row is the winner!\n")
 
 WINNERCELLS = [(1, 2, 3), (4, 5, 6), (7, 8, 9), (1, 4, 7), (2, 5, 8), (3, 6, 9), (1, 5, 9), (3, 5, 7)]
 selectedSpots = []
@@ -19,32 +19,39 @@ board = """
      1 | 2 | 3
 """
 
-print(board)
 
 def makeChoice(player, board):
     """Function that allows the player to play their piece on the board"""
     chooseAgain = True
     while chooseAgain:
-        choice = input("Choose location: ")
+        choice = input("Position: ")
         if choice in selectedSpots:
             print("That cell has already been picked! Please pick again ")
         else:
             selectedSpots.append(choice)
             board = board.replace(choice, player1)
+            print(board)
+            chooseAgain = False
 
 
 game = True
 turn = 1
+player1 = input("Player 1, choose X or O: ")
+
 while game:
-    player1 = input("Player 1, choose X or O")
+    print("")
     if player1 == "X":
         player2 = "O"
     else:
         player2 = "O"
 
     if turn % 2 != 0:
-        print("Player 1's turn\n")
+        print("Player 1's turn")
+        print("Player1, choose location: ")
         makeChoice(player1, board)
     else:
         print("Player 2's turn\n")
+        print("Player 2, choose location: ")
         makeChoice(player2, board)
+
+    turn += 1
