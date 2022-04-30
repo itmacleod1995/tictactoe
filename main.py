@@ -53,9 +53,7 @@ def checkIfThreeInARow(selectedSpots, winningcells):
             elif str(num) in selectedSpots:
                 count += 1
                 if count == 3:
-                    #print("Selected Spots = {}".format(selectedSpots))
                     return True
-    #print("Selected Spots = {}".format(selectedSpots))
     return False
 
 
@@ -84,5 +82,9 @@ while game:
         if checkIfThreeInARow(selectedSpots=player2Cells, winningcells=WINNERCELLS):
             print("Three in a row! Player 2 wins!")
             game = False
+
+    if len(selectedSpots) == 9:
+        print("Tie!")
+        game = False
 
     turn += 1
