@@ -46,10 +46,10 @@ while game:
     if player1 == "X":
         player2 = "O"
     else:
-        player2 = "O"
+        player2 = "X"
 
     if turn % 2 != 0:
-        print("Player1, choose location: ", end="")
+        print("Player 1, choose location: ", end="")
         board = makeChoice(player1, board)
     else:
         print("Player 2, choose location: ", end="")
